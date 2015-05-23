@@ -26,10 +26,10 @@ class DatamuncherApp < Sinatra::Application
     end
   end
 
-  post '/chew' do
+  post '/chew/:collection' do
     payload    = JSON.parse request.body.read
-    collection = payload[ 'collection' ]
-    value      = payload[ 'data' ]
+    collection = params[ :collection ]
+    value      = payload[ 'value' ]
     date       = payload[ 'date' ]
 
     unless collection.is_a? String
