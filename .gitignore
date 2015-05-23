@@ -36,3 +36,6 @@ bower.json
 
 # Ignore Vagrant
 .vagrant
+
+# Ignore configs
+config.yml

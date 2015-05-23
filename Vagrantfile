@@ -12,10 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 4567, host: 4567
 
   config.berkshelf.enabled = true
-  config.berkshelf.berksfile_path = "berkshelf/datamuncher/Berksfile"
 
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = "berkshelf"
+    chef.cookbooks_path = "cookbooks"
     chef.add_recipe "datamuncher"
   end
 
