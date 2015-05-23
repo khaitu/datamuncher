@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network "private_network", ip: "192.168.100.12"
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  config.vm.network "forwarded_port", guest: 4567, host: 4567
+  config.vm.network "forwarded_port", guest: 9292, host: 9292
 
   config.berkshelf.enabled = true
 

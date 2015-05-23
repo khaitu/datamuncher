@@ -8,4 +8,5 @@
 #
 
 include_recipe 'rvm::system'
+include_recipe 'rvm::vagrant'
 include_recipe 'mongodb'
