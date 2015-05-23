@@ -7,6 +7,7 @@ long_description 'Installs/Configures datamuncher'
 version          '0.1.0'
 
 depends 'rvm'
+depends 'mongodb'
 
 supports 'centos,ubuntu,fedora,debian'
 
