@@ -20,7 +20,7 @@ class DatamuncherApp < Sinatra::Application
     collection = params[ :collection ]
 
     if collection
-      mongo[ collection ].find.limit( 4000 ).sort( date: -1 ).map{ |c| { date: c[ :date ].iso8601, value: c[ :value ] } }.to_json
+      mongo[ collection ].find.limit( 4000 ).sort( date: -1 ).map{ |c| d = { date: c[ :date ].iso8601, value: c[ :value ] }; d[ :meta ] = c[ :meta ] unless c[ :meta ] == nil; d }.to_json
     else
       status 404
     end
@@ -31,6 +31,7 @@ class DatamuncherApp < Sinatra::Application
     collection = params[ :collection ]
     value      = payload[ 'value' ]
     date       = payload[ 'date' ]
+    meta       = payload[ 'meta' ]
 
     unless collection.is_a? String
       collection = nil
@@ -52,6 +53,10 @@ class DatamuncherApp < Sinatra::Application
 
     if collection && value
       data   = { value: value, date: date }
+
+      if meta
+        data[ :meta ] = meta
+      end
 
       exists =  mongo[ collection.to_sym ].find( date: date )
 

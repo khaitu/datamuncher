@@ -1,7 +1,4 @@
 DEPENDENCIES
-  datamuncher
-    path: .
-    metadata: true
   mongodb
   rvm
 
@@ -9,9 +6,6 @@ GRAPH
   apt (2.7.0)
   build-essential (2.2.3)
   chef_gem (0.1.0)
-  datamuncher (0.1.0)
-    mongodb (>= 0.0.0)
-    rvm (>= 0.0.0)
   java (1.31.0)
   mongodb (0.16.2)
     apt (>= 1.8.2)

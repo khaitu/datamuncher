@@ -28,6 +28,8 @@ Returns all the available collections stored in the database
 
 Returns datapoints for the given collection. Limited to 4000 datapoints.
 
+If there is additional metadata, this will also be returned.
+
 Root JSON property is the name of the collection.
 
 + Response 200 (application/json)
@@ -42,7 +44,11 @@ Root JSON property is the name of the collection.
                     },
                     {
                         "date": "2015-01-01T00:01:00Z",
-                        "value": 2.20
+                        "value": 2.20,
+                        "meta":
+                        {
+                            "client": 2401
+                        }
                     }
                 ]
             }
@@ -63,12 +69,17 @@ Accepts one datapoint.
     |--------------------|----------|------------|-------------------------------------------------------------|
     | `value`            | Number   | Yes        | Value of the datapoint                                      |
     | `date`             | String   | No         | Date for which the value applies. Defaults to current time. |
+    | `meta`             | String   | No         | Optional metadata for the datapoint.                        |
 
     + Body
 
             {
                 "value": 2.53,
-                "date": "2015-01-01T00:00:00Z"
+                "date": "2015-01-01T00:00:00Z",
+                "meta":
+                {
+                    "weight": 24
+                }
             }
 
 + Response 200 (application/json)
@@ -80,7 +91,11 @@ Accepts one datapoint.
             {
                 "cabbage": {
                     "date": "2015-01-01T00:00:00Z",
-                    "value": 2.53
+                    "value": 2.53,
+                    "meta":
+                    {
+                        "weight": 24
+                    }
                 }
             }
 
